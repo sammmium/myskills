@@ -1,0 +1,82 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Task{% endblock %}
+
+{% block content %}
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Task show: {{ task.name }}</h1>
+                <div class="form-row">
+                    <div class="col">
+                        <label class="col btn-block">Name
+                            <div class="col col-form-label border border-dark">{{ task.name }}</div>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <label class="col btn-block">Descriptions
+                            <div class="col col-form-label border border-dark">{{ task.descriptions }}</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col">
+                        <label class="col btn-block">Status
+                            <div class="col col-form-label border border-dark">{{ task.status }}</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col">
+                        <label class="col btn-block">Author
+                            <div class="col col-form-label border border-dark">
+                                {{ author.name }}: {{ author.email }}
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col">
+                        <label class="col btn-block">Executors
+                            <div class="col col-form-label border border-dark">
+                                {{ include('executor/show.executors.html.twig') }}
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col">
+                        <label class="col btn-block">Comments
+                            <div class="col col-form-label border border-dark">
+                                {{ include('comment/show.comments.html.twig') }}
+                            </div>
+                        </label>
+                        {{ include('comment/add.your.comment.html.twig') }}
+                    </div>
+                </div>
+                <br>
+                <div class="form-row">
+                    <div class="col-2">
+                        <a href="{{ path('task_index') }}" class="btn btn-block btn-primary">Back to list</a>
+                    </div>
+                    <div class="col-2">
+                        <a href="{{ path('task_edit', {'id': task.id}) }}" class="btn btn-block btn-success">Edit</a>
+                    </div>
+                </div>
+                <br>
+                <div class="form-row">
+                    <div class="col-2">
+                        {{ include('task/_delete_form.html.twig') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

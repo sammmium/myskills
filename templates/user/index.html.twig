@@ -1,0 +1,33 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}User index{% endblock %}
+
+{% block content %}
+    <h1>User index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for executor in executors %}
+            <tr>
+                <td>{{ executor.id }}</td>
+                <td>
+                    <a href="{{ path('executor_show', {'id': executor.id}) }}">show</a>
+                    <a href="{{ path('executor_edit', {'id': executor.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('executor_new') }}">Create new</a>
+{% endblock %}

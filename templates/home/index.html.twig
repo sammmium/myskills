@@ -1,0 +1,39 @@
+{# home/index.html.twig #}
+
+{% block content %}
+    {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
+        <div class="container">
+            <br>
+            <div class="form-row">
+                <div class="col h3">{{ headPage }}</div>
+                <div class="col-2 text-right">
+                    <a href="{{ path('task_new') }}" class="btn btn-block btn-primary">Create task</a>
+                </div>
+            </div>
+            <br>
+            {% if tasks %}
+                <div class="row">
+                    <div class="col">
+                        <div class="form-row">
+                            <div class="col-3 bg-secondary text-white text-center header-table">Task name</div>
+                            <div class="col-5 bg-secondary text-white text-center header-table">User with max comment</div>
+                            <div class="col-2 bg-secondary text-white text-center header-table">Max comment length</div>
+                            <div class="col-2 bg-secondary text-white text-center header-table">Actions</div>
+                        </div>
+                    </div>
+                </div>
+                {% for key, task in tasks %}
+                    {{ include('task/row.task.html.twig') }}
+                {% endfor %}
+            {% else %}
+                <div class="row">
+                    <div class="col text-center h5">
+                        The tasks were not found
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    {% else %}
+        {{ include('default/access.denied.html.twig') }}
+    {% endif %}
+{% endblock %}

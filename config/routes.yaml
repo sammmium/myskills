@@ -1,0 +1,77 @@
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile
+
+# Start
+index:
+    path: /
+    controller: App\Controller\DefaultController::index
+
+# Home
+home_page:
+    path:          /home/
+    controller:    App\Controller\HomeController::index
+
+# Tasks
+task_index:
+    path:         /tasks/
+    controller:   App\Controller\TaskController::indexTask
+    methods:      [GET]
+
+task_new:
+    path:         /task/new/
+    controller:   App\Controller\TaskController::newTask
+    methods:      [GET, POST]
+
+task_show:
+    path:         /task/{id}
+    controller:   App\Controller\TaskController::showTask
+    methods:      [GET]
+
+task_edit:
+    path:         /task/{id}/edit/
+    controller:   App\Controller\TaskController::editTask
+    methods:      [GET, POST]
+
+task_delete:
+    path:         /task/{id}/delete/
+    controller:   App\Controller\TaskController::deleteTask
+    methods:      [DELETE]
+
+
+# Executors
+executor_new:
+    path:         /executor/new/to_task/{id}
+    controller:   App\Controller\UserController::newExecutor
+    methods:      [GET, POST]
+
+executor_show:
+    path:         /executor/{id}
+    controller:   App\Controller\UserController::showExecutor
+    methods:      [GET]
+
+executor_delete:
+    path:         /executor/{id}/delete
+    controller:   App\Controller\UserController::deleteExecutor
+    methods:      [DELETE]
+
+# Comments
+add_your_comment:
+    path:         /add_your_comment/task/{id_task}/user/{id_user}
+    controller:   App\Controller\CommentController::addYourComment
+    methods:      [POST]

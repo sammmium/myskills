@@ -1,0 +1,11 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{ contentHead }}{% endblock %}
+
+{% block content %}
+    {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
+        {{ render(url('home_page')) }}
+    {% else %}
+        {{ include('default/welcome.html.twig') }}
+    {% endif %}
+{% endblock %}

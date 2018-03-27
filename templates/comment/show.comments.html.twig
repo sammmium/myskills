@@ -1,0 +1,13 @@
+{# comment/show.comments.html.twig #}
+
+{% if comments %}
+    {% for comment in comments %}
+        <div class="row">
+            <div class="col-3">{{ comment.email }}</div>
+            <div class="col-9">{{ comment.text }}</div>
+        </div>
+    {% endfor %}
+{% else %}
+    No comments
+{% endif %}
+

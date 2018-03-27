@@ -1,0 +1,25 @@
+{# menu/index.html.twig #}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-primary justify-content-between">
+    <a class="navbar-brand" href="{{ path('index') }}">Home</a>
+    <div class="form-row">
+        <div class="col text-right">
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    {% if is_granted('ROLE_USER') or  is_granted('ROLE_ADMIN') %}
+                        <li>
+                            <a class="nav-item nav-link" href="{{ path('fos_user_security_logout') }}">Logout</a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a class="nav-item nav-link" href="{{ path('fos_user_registration_register') }}">Register</a>
+                        </li>
+                        <li>
+                            <a class="nav-item nav-link" href="{{ path('fos_user_security_login') }}">Login</a>
+                        </li>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

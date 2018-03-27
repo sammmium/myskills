@@ -1,0 +1,18 @@
+{# comment/add.your.comment.html.twig #}
+
+<form name="add_comment" method="post" action="{{ path('add_your_comment', {
+    'id_task': id_task, 'id_user' : id_user }) }}">
+{#<form name="add_comment" method="post" action="#">#}
+<label for="new_comment" class="col btn-block">Add your comment
+    <div class="col col-form-label">
+            <textarea id="new_comment" name="add_comment[comment]" class="btn-block border border-dark"></textarea>
+
+        {#<input name="_token" type="hidden" value="">#}
+              {#onsubmit="return confirm('Are you sure you want to delete this item?');"#}
+
+
+            {#<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ task.id) }}">#}
+            <button class="btn btn-block btn-success">Save</button>
+    </div>
+</label>
+</form>

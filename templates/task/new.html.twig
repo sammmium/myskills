@@ -1,0 +1,16 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}New Task{% endblock %}
+
+{% block content %}
+    {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
+        <br>
+
+        <div class="container">
+            <h1>Create task</h1>
+            {{ include('task/_form.html.twig') }}
+        </div>
+    {% else %}
+        {{ include('default/access.denied.html.twig') }}
+    {% endif %}
+{% endblock %}

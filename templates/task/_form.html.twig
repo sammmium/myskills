@@ -1,0 +1,25 @@
+{{ form_start(form) }}
+<div class="row">
+    <div class="col">
+    {{ form_row(form.name) }}
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col">
+    {{ form_row(form.descriptions) }}
+    </div>
+</div>
+<br>
+<div class="form-row">
+    <div class="col-2">
+        <a href="{{ path('task_index') }}" class="btn btn-block btn-primary">Back to list</a>
+    </div>
+    <div class="col-2">
+        <button class="btn btn-block btn-success">{{ button_label|default('Save') }}</button>
+    </div>
+</div>
+{{ form_end(form) }}
+
+
+

@@ -1,10 +1,37 @@
 {# task/row.task.html.twig #}
 
-<div class="col">
-    <div class="form-row">
-        <div class="col-3">{{ task.task_name }}</div>
-        <div class="col-5">{{ task.user_email }}</div>
-        <div class="col-2">{{ task.commit_length }}</div>
-        <div class="col-2">{{ task.task_id }}</div>
+<div class="row">
+    <div class="col">
+        <div class="form-row">
+        {% if key % 2 == 0 %}
+            <div class="col-3 text-center header-table">{{ task.taskName }}</div>
+            <div class="col-5 text-center header-table">{{ task.userEmail }}</div>
+            <div class="col-2 text-center header-table">{{ task.commitLength }}</div>
+            <div class="col-2 text-center header-table">
+                <div class="form-row">
+                    <div class="col-6">
+                        <a href="{{ path('task_show', { 'id' : task.taskId }) }}" class="btn btn-block">Show</a>
+                    </div>
+                    <div class="col-6">
+                        <a href="{{ path('task_edit', { 'id' : task.taskId }) }}" class="btn btn-block">Edit</a>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="col-3 text-center header-table bg-light">{{ task.taskName }}</div>
+            <div class="col-5 text-center header-table bg-light">{{ task.userEmail }}</div>
+            <div class="col-2 text-center header-table bg-light">{{ task.commitLength }}</div>
+            <div class="col-2 text-center header-table bg-light">
+                <div class="form-row">
+                    <div class="col-6">
+                        <a href="{{ path('task_show', { 'id' : task.taskId }) }}" class="btn btn-block btn-light">Show</a>
+                    </div>
+                    <div class="col-6">
+                        <a href="{{ path('task_edit', { 'id' : task.taskId }) }}" class="btn btn-block btn-light">Edit</a>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        </div>
     </div>
 </div>

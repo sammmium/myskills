@@ -1,0 +1,19 @@
+security:
+    encoders:
+        App\Entity\User: bcrypt
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username_email
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous:    ~
+            logout: ~
+            form_login:
+                csrf_token_generator: security.csrf.token_manager
+            remember_me:
+                secret: '%kernel.secret%'
