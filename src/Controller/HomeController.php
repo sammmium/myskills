@@ -36,18 +36,22 @@ class HomeController extends Controller
         /*
          * в цикле прогоняем массив записей в таблице task
          */
-        foreach ($tasks as $task) {
-            /*
-             * формируем данные строки отображения
-             */
-            $dataTask[] = [
-                'taskName' => $task['name'],
-                'userEmail' => $task['email'],
-                'commitLength' => $task['mlc'],
-                'taskId' => $task['id'],
-                'id_user' => $idUser,
-                'author' => $task['author'],
-            ];
+        if ($tasks) {
+            foreach ($tasks as $task) {
+                /*
+                 * формируем данные строки отображения
+                 */
+                $dataTask[] = [
+                    'taskName' => $task['name'],
+                    'userEmail' => $task['email'],
+                    'commitLength' => $task['mlc'],
+                    'taskId' => $task['id'],
+                    'id_user' => $idUser,
+                    'author' => $task['author'],
+                ];
+            }
+        } else {
+            $dataTask = false;
         }
 
         /*
